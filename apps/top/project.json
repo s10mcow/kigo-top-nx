@@ -1,0 +1,53 @@
+{
+  "name": "top",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/top",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": { "outputPath": "dist/apps/top" },
+      "configurations": {
+        "development": { "outputPath": "apps/top" },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": { "buildTarget": "top:build", "dev": true },
+      "configurations": {
+        "development": { "buildTarget": "top:build:development", "dev": true },
+        "production": { "buildTarget": "top:build:production", "dev": false }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": { "buildTarget": "top:build:production" }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/top/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": { "lintFilePatterns": ["apps/top/**/*.{ts,tsx,js,jsx}"] }
+    },
+    "tsc": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/top",
+        "commands": ["tsc -p tsconfig.json --noEmit"],
+        "forwardAllArgs": false
+      }
+    }
+  },
+  "tags": []
+}

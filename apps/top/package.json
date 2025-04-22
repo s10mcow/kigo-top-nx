@@ -1,13 +1,12 @@
 {
-  "name": "@kigo-top-nx/top",
+  "name": "@kigo-top/top",
   "version": "0.0.1",
   "private": true,
   "nx": {
     "name": "top"
   },
   "dependencies": {
-    "next": "~15.2.4",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "@kigo-top/constants": "*",
+    "@kigo-top/services": "*"
   }
 }

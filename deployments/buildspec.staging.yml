@@ -1,0 +1,84 @@
+version: 0.2
+env:
+  variables:
+    REPOSITORY_URI: '391486907544.dkr.ecr.us-east-1.amazonaws.com/kigo-top'
+    CONTAINER_NAME: 'kigo-top-staging'
+    HOST: '0.0.0.0'
+    PORT: 8080
+  parameter-store:
+    DOCKER_PASSWORD: '/kigo/test/secrets/test-dockerPassword'
+    DOCKER_USERNAME: '/kigo/test/secrets/test-dockerUsername'
+
+phases:
+  pre_build:
+    commands:
+      - aws --version
+      - echo $REPOSITORY_URI
+      - echo Logging in to Amazon ECR...
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - if [[ "$CODEBUILD_WEBHOOK_BASE_REF" ]]; then export BRANCH=$(echo $CODEBUILD_WEBHOOK_BASE_REF | sed 's|refs/heads/||'); else export BRANCH="main"; fi
+      - COMMIT_DEPLOY=$(echo $BRANCH)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - echo $IMAGE_TAG
+      - IMAGE_TAG_DEPLOY=${COMMIT_DEPLOY:=latest}
+      - echo $IMAGE_TAG_DEPLOY
+      - echo $CODEBUILD_WEBHOOK_BASE_REF
+      - echo $CODEBUILD_SOURCE_VERSION
+      - echo $BRANCH
+      - echo "ok"
+      - export DOCKER_BUILDKIT=1
+      - echo "Fetching secrets from AWS Secret Manager..."
+      - export KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD=$(aws secretsmanager get-secret-value --secret-id kigo-stage-top-secrets --query 'SecretString' --output text | jq -r '.KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD')
+      - export KIGO_EXTERNAL_PARTNER_API_KEY_KIGO=$(aws secretsmanager get-secret-value --secret-id kigo-stage-top-secrets --query 'SecretString' --output text | jq -r '.KIGO_EXTERNAL_PARTNER_API_KEY_KIGO')
+      - export KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL=$(aws secretsmanager get-secret-value --secret-id kigo-stage-top-secrets --query 'SecretString' --output text | jq -r '.KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL')
+      - echo "Secrets fetched and environment variables set."
+      - echo "KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD=$KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD"
+      - echo "KIGO_EXTERNAL_PARTNER_API_KEY_KIGO=$KIGO_EXTERNAL_PARTNER_API_KEY_KIGO"
+      - echo "KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL=$KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL"
+      - docker pull $REPOSITORY_URI:deps || true
+      - docker pull $REPOSITORY_URI:latest || true
+  build:
+    commands:
+      - echo Build started on `date`
+      - cp .env.staging .env.production
+      - echo Adding secrets to environment file...
+      - echo "KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD=$KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD" >> .env.production
+      - echo "KIGO_EXTERNAL_PARTNER_API_KEY_KIGO=$KIGO_EXTERNAL_PARTNER_API_KEY_KIGO" >> .env.production
+      - echo "KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL=$KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL" >> .env.production
+      - cat .env.production
+      - echo Building the Docker image...
+      - |
+        docker build \
+        --target deps \
+        --cache-from $REPOSITORY_URI:deps \
+        --build-arg BUILDKIT_INLINE_CACHE=1 \
+        --build-arg KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD=$KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD \
+        --build-arg KIGO_EXTERNAL_PARTNER_API_KEY_KIGO=$KIGO_EXTERNAL_PARTNER_API_KEY_KIGO \
+        --build-arg KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL=$KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL \
+        -t $REPOSITORY_URI:deps .
+      - |
+        docker build \
+        --cache-from $REPOSITORY_URI:deps \
+        --cache-from $REPOSITORY_URI:latest \
+        --build-arg BUILDKIT_INLINE_CACHE=1 \
+        --build-arg KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD=$KIGO_EXTERNAL_PARTNER_API_KEY_MASTERCARD \
+        --build-arg KIGO_EXTERNAL_PARTNER_API_KEY_KIGO=$KIGO_EXTERNAL_PARTNER_API_KEY_KIGO \
+        --build-arg KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL=$KIGO_EXTERNAL_PARTNER_API_KEY_INTERVAL \
+        --tag $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG_DEPLOY
+      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG_DEPLOY > imagedefinitions.json
+      - cat imagedefinitions.json
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:$IMAGE_TAG_DEPLOY
+      - docker push $REPOSITORY_URI:deps
+artifacts:
+  files:
+    - 'imagedefinitions.json'

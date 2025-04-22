@@ -18,19 +18,15 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "outDir": "dist",
-    "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
+    "next-env.d.ts",
     "src/**/*.js",
     "src/**/*.jsx",
-    "../../apps/top/.next/types/**/*.ts",
-    "../../dist/apps/top/.next/types/**/*.ts",
-    "next-env.d.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../../dist/apps/top/.next/types/**/*.ts"
   ],
   "exclude": [
     "out-tsc",
@@ -43,5 +39,13 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../libs/services"
+    },
+    {
+      "path": "../../libs/constants"
+    }
   ]
 }

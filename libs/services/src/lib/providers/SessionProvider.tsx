@@ -15,40 +15,15 @@ import {
   SESSION_TOKEN_DURATION_MINUTES,
 } from '@kigo-top/constants';
 
-// import {
-//   fetchBrandingByExternalProgramId,
-//   fetchSessionBranding,
-// } from '@kigo-top/services/client';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
+import {
+  fetchBrandingByExternalProgramId,
+  fetchSessionBranding,
+} from '../services/client-index';
+
 import { useBranding } from './BrandingProvider';
 import { clearAuthTokens, getCookie, setClientCookie } from './cookies';
-
-const fetchSessionBranding = async (externalProgramId: string) => {
-  return {
-    branding: {
-      color_primary: '#4B55FD',
-      color_secondary: '#CCFFFE',
-      program_name: 'Default branding',
-    },
-    partnerInfo: {
-      partner_name: 'Default partner',
-    },
-  };
-};
-
-const fetchBrandingByExternalProgramId = async (externalProgramId: string) => {
-  return {
-    programBrandingInfo: {
-      color_primary: '#4B55FD',
-      color_secondary: '#CCFFFE',
-      program_name: 'Default branding',
-    },
-    partnerInfo: {
-      partner_name: 'Default partner',
-    },
-  };
-};
 
 const SessionContext = createContext<{
   sessionToken: string | undefined;

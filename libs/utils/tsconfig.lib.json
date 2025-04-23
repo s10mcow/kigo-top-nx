@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/libs/utils",
+    "rootDir": "src",
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
@@ -9,7 +10,10 @@
       "vite/client",
       "next",
       "@nx/next/typings/image.d.ts"
-    ]
+    ],
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true
   },
   "references": [
     {

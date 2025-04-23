@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "dev": "nx dev top --skip-nx-cache",
     "build:all": "npx nx run-many -t build --skip-nx-cache",
     "lint": "nx lint top",
     "tsc": "npx nx run-many -t tsc --skip-nx-cache",

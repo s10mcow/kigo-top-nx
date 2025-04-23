@@ -1,5 +1,5 @@
 {
-  "name": "@kigo-top/services",
+  "name": "@kigo-top/providers",
   "version": "0.0.1",
   "main": "./index.js",
   "types": "./index.d.ts",

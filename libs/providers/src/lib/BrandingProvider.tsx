@@ -1,9 +1,9 @@
 'use client';
 
+import { createAppTheme } from '@kigo-top/constants';
+import { ProgramBrandingInfo } from '@kigo-top/services/core';
 import { ThemeProvider } from '@mui/material';
 import { createContext, ReactNode, useContext, useMemo, useState } from 'react';
-import { ProgramBrandingInfo } from '../services/core-index';
-import { createAppTheme } from '../theme/theme';
 
 // Define context type
 interface BrandingContextType {

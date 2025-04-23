@@ -3,8 +3,7 @@ import {
   ANONYMOUS_TOKEN,
   AUTHENTICATION_TYPES,
 } from '@kigo-top/constants';
-
-import { getCookie } from '../../providers/cookies';
+import { getCookie } from '../getCookie';
 import createAnonymousSession from './auth/createAnonymousSession';
 
 const makeCoreServerCall = async (

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "../../dist/libs/constants",
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",

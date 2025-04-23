@@ -15,15 +15,16 @@ import {
   SESSION_TOKEN_DURATION_MINUTES,
 } from '@kigo-top/constants';
 
-import { createContext, useContext, useEffect, useState } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
 import {
   fetchBrandingByExternalProgramId,
   fetchSessionBranding,
-} from '../services/client-index';
+} from '@kigo-top/services/client';
 
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
+
+import { clearAuthTokens, getCookie, setClientCookie } from '@kigo-top/utils';
 import { useBranding } from './BrandingProvider';
-import { clearAuthTokens, getCookie, setClientCookie } from './cookies';
 
 const SessionContext = createContext<{
   sessionToken: string | undefined;

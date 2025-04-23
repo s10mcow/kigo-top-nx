@@ -1,5 +1,5 @@
 import { AUTHENTICATION_TYPES } from '@kigo-top/constants';
-import { getCookie } from '../../../../providers/cookies';
+import { getCookie } from '../../../getCookie';
 import { makeClientCoreServerCall } from '../../makeClientServerCall';
 
 export interface MemberIdResponse {

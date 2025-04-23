@@ -22,7 +22,10 @@
     "baseUrl": ".",
     "paths": {
       "@kigo-top/constants": ["libs/constants/src/index.ts"],
-      "@kigo-top/services": ["libs/services/src/index.ts"]
+      "@kigo-top/providers": ["libs/providers/src/index.ts"],
+      "@kigo-top/services/client": ["libs/services/src/lib/client-index.ts"],
+      "@kigo-top/services/core": ["libs/services/src/lib/core-index.ts"],
+      "@kigo-top/utils": ["libs/utils/src/index.ts"]
     }
   }
 }

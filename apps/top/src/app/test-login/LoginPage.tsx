@@ -5,7 +5,8 @@ import {
   LOCAL_STORAGE_IS_SSO_SESSION,
   LOCAL_STORAGE_PARTNER_INFO,
 } from '@kigo-top/constants';
-import { clearAuthTokens, useSession } from '@kigo-top/services';
+import { useSession } from '@kigo-top/providers';
+import { clearAuthTokens } from '@kigo-top/utils';
 import {
   Box,
   Button,

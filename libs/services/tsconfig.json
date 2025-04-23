@@ -1,10 +1,15 @@
 {
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "types": ["vite/client", "vitest"]
+  },
   "files": [],
   "include": [],
   "references": [
-    {
-      "path": "../constants"
-    },
     {
       "path": "./tsconfig.lib.json"
     },

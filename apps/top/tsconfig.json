@@ -6,7 +6,11 @@
     "emitDeclarationOnly": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,18 +19,16 @@
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    ]
   },
   "include": [
+    "../../dist/apps/top/.next/types/**/*.ts",
     "next-env.d.ts",
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "../../dist/apps/top/.next/types/**/*.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "out-tsc",
@@ -46,6 +48,12 @@
     },
     {
       "path": "../../libs/constants"
+    },
+    {
+      "path": "../../libs/providers"
+    },
+    {
+      "path": "../../libs/utils"
     }
   ]
 }

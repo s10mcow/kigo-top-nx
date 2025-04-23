@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@kigo-top/constants": "*",
-    "@kigo-top/services": "*"
+    "@kigo-top/providers": "*",
+    "@kigo-top/utils": "*"
   }
 }

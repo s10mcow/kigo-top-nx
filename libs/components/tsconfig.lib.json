@@ -9,8 +9,31 @@
       "vite/client",
       "next",
       "@nx/next/typings/image.d.ts"
-    ]
+    ],
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true
   },
+  "references": [
+    {
+      "path": "../constants/tsconfig.lib.json"
+    },
+    {
+      "path": "../utils/tsconfig.lib.json"
+    },
+    {
+      "path": "../services/tsconfig.lib.json"
+    },
+    {
+      "path": "../types/tsconfig.lib.json"
+    },
+    {
+      "path": "../providers/tsconfig.lib.json"
+    },
+    {
+      "path": "../hooks/tsconfig.lib.json"
+    }
+  ],
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",
@@ -33,5 +56,12 @@
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../types/src/global.ts",
+    "../types/src/notistack.d.ts"
+  ]
 }

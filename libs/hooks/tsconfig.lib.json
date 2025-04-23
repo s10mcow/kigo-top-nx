@@ -1,9 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/libs/providers",
-    "rootDir": "src",
-    "tsBuildInfoFile": "../../dist/libs/providers/tsconfig.lib.tsbuildinfo",
+    "outDir": "../../dist/libs/hooks",
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
@@ -11,25 +9,8 @@
       "vite/client",
       "next",
       "@nx/next/typings/image.d.ts"
-    ],
-    "declaration": true,
-    "declarationMap": true,
-    "composite": true
+    ]
   },
-  "references": [
-    {
-      "path": "../constants/tsconfig.lib.json"
-    },
-    {
-      "path": "../utils/tsconfig.lib.json"
-    },
-    {
-      "path": "../services/tsconfig.lib.json"
-    },
-    {
-      "path": "../hooks/tsconfig.lib.json"
-    }
-  ],
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",

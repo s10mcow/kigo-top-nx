@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../../dist/libs/utils",
     "rootDir": "src",
+    "tsBuildInfoFile": "../../dist/libs/utils/tsconfig.lib.tsbuildinfo",
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",

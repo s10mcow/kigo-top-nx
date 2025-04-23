@@ -21,6 +21,7 @@
     "customConditions": ["development"],
     "baseUrl": ".",
     "paths": {
+      "@kigo-top/components": ["libs/components/src/index.ts"],
       "@kigo-top/constants": ["libs/constants/src/index.ts"],
       "@kigo-top/providers": ["libs/providers/src/index.ts"],
       "@kigo-top/services/client": ["libs/services/src/lib/client-index.ts"],

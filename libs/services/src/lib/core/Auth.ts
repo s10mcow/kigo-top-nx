@@ -37,22 +37,22 @@ export async function createAccountSpaceApiSession({
   return response.data;
 }
 
-// export async function createAnonymousSession() {
-//   try {
-//     const response = await axios.post(`${BASE_URL}/anonymous-sessions`);
+export async function createAnonymousSession() {
+  try {
+    const response = await axios.post(`${BASE_URL}/anonymous-sessions`);
 
-//     if (response.status !== 200) {
-//       throw new Error(
-//         `Failed to create anonymous session: ${response.statusText}`,
-//       );
-//     }
+    if (response.status !== 200) {
+      throw new Error(
+        `Failed to create anonymous session: ${response.statusText}`
+      );
+    }
 
-//     return { token: response.data.anonymous_session_token };
-//   } catch (error) {
-//     console.error('Error creating anonymous session:', error);
-//     throw error;
-//   }
-// }
+    return { anonymous_session_token: response.data.anonymous_session_token };
+  } catch (error) {
+    console.error('Error creating anonymous session:', error);
+    throw error;
+  }
+}
 
 export async function createUserSession({
   user_email,

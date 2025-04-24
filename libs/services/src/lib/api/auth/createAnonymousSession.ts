@@ -14,7 +14,7 @@ function setClientCookie(name: string, value: string, minutes: number) {
 async function createAnonymousSession(): Promise<AnonymousSessionTokenResponse> {
   try {
     const response = await makeClientCoreServerCall.post(
-      CREATE_ANONYMOUS_SESSION_ROUTE,
+      CREATE_ANONYMOUS_SESSION_ROUTE
     );
 
     if (response) {

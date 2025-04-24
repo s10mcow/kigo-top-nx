@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/libs/types",
+    "tsBuildInfoFile": "../../dist/libs/types/tsconfig.lib.tsbuildinfo",
     "module": "esnext",
     "composite": true,
     "declaration": true,

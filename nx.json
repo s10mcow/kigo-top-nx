@@ -92,6 +92,16 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
+      "options": {
+        "typescriptBuildOptions": {
+          "skipLibCheck": true
+        }
+      }
     }
   }
 }

@@ -6,4 +6,5 @@ export * from './lib/KigoSnackbarProvider/KigoInfoSnackbar';
 export * from './lib/KigoSnackbarProvider/KigoSnackbar';
 export * from './lib/KigoSnackbarProvider/KigoSnackbarProvider';
 export * from './lib/SdkWrapper/SdkWrapper';
+export * from './lib/SessionExpired/SessionExpiredContainer';
 export * from './lib/SSO/SSOContainer';

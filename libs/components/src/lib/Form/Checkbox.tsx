@@ -1,3 +1,5 @@
+'use client';
+
 import { Checkbox, CheckboxProps } from '@mui/material';
 import { Control, Controller, FieldValues, Path } from 'react-hook-form';
 

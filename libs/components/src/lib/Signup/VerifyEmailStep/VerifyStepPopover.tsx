@@ -1,3 +1,5 @@
+'use client';
+
 import { HELP_AND_FAQS_URL, LOGIN_EMAIL_PAGE } from '@kigo-top/constants';
 import { useCustomRouter } from '@kigo-top/hooks';
 import { useAuthentication } from '@kigo-top/providers';

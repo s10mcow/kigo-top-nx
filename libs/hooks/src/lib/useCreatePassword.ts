@@ -1,3 +1,5 @@
+'use client';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -13,16 +15,16 @@ const createPasswordFormSchema = yup.object().shape({
     .required('Password is required.')
     .matches(
       UPPERCASE_REGEX,
-      'Password must contain at least one uppercase letter.',
+      'Password must contain at least one uppercase letter.'
     )
     .matches(
       LOWERCASE_REGEX,
-      'Password must contain at least one lowercase letter.',
+      'Password must contain at least one lowercase letter.'
     )
     .matches(NUMBER_REGEX, 'Password must contain at least one number.')
     .matches(
       SPECIAL_CHARACTER_REGEX,
-      'Password must contain at least one special character.',
+      'Password must contain at least one special character.'
     ),
   confirmPassword: yup
     .string()

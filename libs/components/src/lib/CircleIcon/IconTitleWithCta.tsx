@@ -34,7 +34,7 @@ type IconTitleWithCtaProps = {
   cta?: React.ReactElement;
 };
 
-export default function IconTitleWithCta({
+export function IconTitleWithCta({
   typography: {
     contents: { title, body },
     variants = { title: 'titleMd', body: 'bodyMd' },

@@ -9,7 +9,13 @@
       "vite/client",
       "next",
       "@nx/next/typings/image.d.ts"
-    ]
+    ],
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true,
+    "rootDir": "src",
+    "jsx": "react-jsx",
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
   },
   "exclude": [
     "**/*.spec.ts",

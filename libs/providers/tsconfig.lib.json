@@ -2,7 +2,6 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/libs/providers",
-    "rootDir": "src",
     "tsBuildInfoFile": "../../dist/libs/providers/tsconfig.lib.tsbuildinfo",
     "types": [
       "node",
@@ -28,6 +27,9 @@
     },
     {
       "path": "../hooks/tsconfig.lib.json"
+    },
+    {
+      "path": "../types/tsconfig.lib.json"
     }
   ],
   "exclude": [
@@ -52,5 +54,12 @@
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../types/src/notistack.d.ts",
+    "../types/src/KigoContext.ts"
+  ]
 }

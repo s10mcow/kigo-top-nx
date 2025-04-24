@@ -24,7 +24,8 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/types/index.d.ts"
   ],
   "exclude": [
     "out-tsc",
@@ -50,6 +51,15 @@
     },
     {
       "path": "../../libs/utils"
+    },
+    {
+      "path": "../../libs/hooks"
+    },
+    {
+      "path": "../../libs/types"
+    },
+    {
+      "path": "../../libs/components"
     }
   ]
 }

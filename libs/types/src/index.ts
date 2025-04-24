@@ -1,5 +1,6 @@
 // Import the types
-import './global';
+import './KigoContext';
+import './global.d.ts';
 
 // Export types that can be imported
-export type { KigoContext } from './global';
+export type { KigoContext } from './KigoContext';

@@ -1,3 +1,4 @@
+'use client';
 import { useAuthentication, useSession } from '@kigo-top/providers';
 import {
   AccountCircle,

@@ -14,6 +14,8 @@ export default defineConfig(() => ({
     dts({
       entryRoot: 'src',
       tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
+      outDir: '../../dist/libs/types/',
+      pathsToAliases: true,
       include: ['src'],
       insertTypesEntry: true,
     }),
@@ -26,6 +28,7 @@ export default defineConfig(() => ({
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
     outDir: '../../dist/libs/types',
+      pathsToAliases: true,
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

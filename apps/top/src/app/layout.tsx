@@ -1,9 +1,8 @@
-// import { AppProvider } from '@kigo-top/components';
+import { AppProvider } from '@kigo-top/components';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Suspense } from 'react';
 import './globals.css';
-
 export const metadata: Metadata = {
   title: 'TOP', // Update the title here
   description: 'TOP', // Update the description here
@@ -20,8 +19,7 @@ export default function RootLayout({
       </head>
       <body>
         <Suspense>
-          {/* <AppProvider>{children}</AppProvider> */}
-          {children}
+          <AppProvider>{children}</AppProvider>
         </Suspense>
       </body>
     </html>

@@ -1,3 +1,4 @@
+'use client';
 import {
   SnackbarProvider as NotistackProvider,
   SnackbarProviderProps,

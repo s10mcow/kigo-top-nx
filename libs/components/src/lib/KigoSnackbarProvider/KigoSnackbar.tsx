@@ -1,3 +1,4 @@
+'use client';
 import { Close, Error } from '@mui/icons-material';
 import { Box, IconButton, Theme, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -104,7 +105,7 @@ export const KigoSnackbar = forwardRef<HTMLDivElement, KigoSnackbarProps>(
         </Box>
       </SnackbarContent>
     );
-  },
+  }
 );
 
 KigoSnackbar.displayName = 'KigoSnackbar';

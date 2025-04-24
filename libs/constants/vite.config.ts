@@ -12,6 +12,8 @@ export default defineConfig(() => ({
     dts({
       entryRoot: 'src',
       tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
+      outDir: '../../dist/libs/constants/',
+      pathsToAliases: true,
     }),
   ],
   // Uncomment this if you are using workers.
@@ -22,6 +24,7 @@ export default defineConfig(() => ({
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
     outDir: '../../dist/libs/constants',
+      pathsToAliases: true,
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

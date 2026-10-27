@@ -10,7 +10,7 @@ export const deactivateRewardsNetworkMember = async (): Promise<void> => {
       await makeClientCoreServerCall.delete(
         `/api/v1/members/${member_id}`,
         {},
-        AUTHENTICATION_TYPES.SESSION,
+        AUTHENTICATION_TYPES.SESSION
       );
     }
 

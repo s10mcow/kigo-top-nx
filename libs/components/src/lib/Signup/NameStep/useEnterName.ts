@@ -17,11 +17,11 @@ const enterNameFormSchema = yup.object().shape({
     .max(50, 'First name must be at most 50 characters.')
     .matches(
       /^[\u2018\u2019a-zA-Z\s-.']*$/,
-      'First name must only contain letters, hyphens, apostrophes, and periods.',
+      'First name must only contain letters, hyphens, apostrophes, and periods.'
     )
     .matches(
       /^(?!.* {2}).*$/,
-      'First name must not contain consecutive spaces.',
+      'First name must not contain consecutive spaces.'
     )
     .notOneOf(['admin', 'null'], 'First name is invalid.'),
   last_name: yup
@@ -32,7 +32,7 @@ const enterNameFormSchema = yup.object().shape({
     .max(50, 'Last name must be at most 50 characters.')
     .matches(
       /^[\u2018\u2019a-zA-Z\s-.']*$/,
-      'Last name must only contain letters, hyphens, apostrophes, and periods.',
+      'Last name must only contain letters, hyphens, apostrophes, and periods.'
     )
     .matches(/^(?!.* {2}).*$/, 'Last name must not contain consecutive spaces.')
     .notOneOf(['admin', 'null'], 'Last name is invalid.'),

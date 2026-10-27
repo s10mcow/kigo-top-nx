@@ -3,7 +3,7 @@ import { makeClientCoreServerCall } from '../../makeClientServerCall';
 import { EditProfileRequest, EditProfileResponse } from '../types';
 
 const editProfile = async (
-  request: EditProfileRequest,
+  request: EditProfileRequest
 ): Promise<EditProfileResponse> => {
   const URL = '/accounts/profiles';
 
@@ -15,7 +15,7 @@ const editProfile = async (
       zip_code: request.zip_code,
     },
     {},
-    AUTHENTICATION_TYPES.ACCESS,
+    AUTHENTICATION_TYPES.ACCESS
   );
 
   return response as EditProfileResponse;

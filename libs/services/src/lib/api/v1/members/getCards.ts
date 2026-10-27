@@ -33,7 +33,7 @@ export const requestGetCards = async (): Promise<Card[]> => {
     const response = (await makeClientCoreServerCall.get(
       `/api/v1/members/${member_id}/cards`,
       {},
-      AUTHENTICATION_TYPES.SESSION,
+      AUTHENTICATION_TYPES.SESSION
     )) as ApiResponse;
 
     return response.bank_cards.map(
@@ -41,7 +41,7 @@ export const requestGetCards = async (): Promise<Card[]> => {
         id: card.id,
         type: card.card_type,
         number: card.last_four_digits,
-      }),
+      })
     );
   } catch (error) {
     // Check if it's our specific not_found error

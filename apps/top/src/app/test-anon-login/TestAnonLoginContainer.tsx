@@ -20,7 +20,7 @@ export default function ProgramSelectorPage() {
   const [externalProgramId, setExternalProgramId] = useState('us_bank');
   const [, setLocalExternalProgramId] = useLocalStorage(
     LOCAL_STORAGE_EXTERNAL_PROGRAM_ID,
-    '',
+    ''
   );
 
   const handleProgramChange = (event: SelectChangeEvent) => {

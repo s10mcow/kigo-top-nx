@@ -2,7 +2,7 @@ import { makeClientCoreServerCall } from '../../makeClientServerCall';
 import { LocationFromZipRequest, LocationFromZipResponse } from './types';
 
 export const requestLocationFromZip = async (
-  request: LocationFromZipRequest,
+  request: LocationFromZipRequest
 ): Promise<LocationFromZipResponse> => {
   try {
     if (!request?.zip_code && !request?.address) {
@@ -14,7 +14,7 @@ export const requestLocationFromZip = async (
       {
         zip_code: request?.zip_code || null,
         address: request?.address || null,
-      },
+      }
     );
 
     return response;

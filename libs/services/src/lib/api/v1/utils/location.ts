@@ -3,15 +3,15 @@ import { makeClientCoreServerCall } from '../../makeClientServerCall';
 import { LocationRequest, LocationResponse } from './types';
 
 export const requestLocationAutocomplete = async (
-  request: LocationRequest,
+  request: LocationRequest
 ): Promise<LocationResponse> => {
   try {
     const response = await makeClientCoreServerCall.get(
       `/api/v1/utils/locations/autocomplete?query=${encodeURIComponent(
-        request.query,
+        request.query
       )}`,
       {},
-      AUTHENTICATION_TYPES.ANONYMOUS,
+      AUTHENTICATION_TYPES.ANONYMOUS
     );
 
     return response;

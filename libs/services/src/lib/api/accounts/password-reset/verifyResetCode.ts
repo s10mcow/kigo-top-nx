@@ -3,12 +3,12 @@ import { makeClientCoreServerCall } from '../../makeClientServerCall';
 import { VerifyPasswordResetCodeRequest } from './types';
 
 const verifyPasswordResetCode = async (
-  request: VerifyPasswordResetCodeRequest,
+  request: VerifyPasswordResetCodeRequest
 ): Promise<void> => {
   await makeClientCoreServerCall.get(
     `/accounts/password-reset-requests/verify?code=${request.code}`,
     {},
-    AUTHENTICATION_TYPES.ANONYMOUS,
+    AUTHENTICATION_TYPES.ANONYMOUS
   );
 };
 

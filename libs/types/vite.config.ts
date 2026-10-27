@@ -28,7 +28,7 @@ export default defineConfig(() => ({
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
     outDir: '../../dist/libs/types',
-      pathsToAliases: true,
+    pathsToAliases: true,
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

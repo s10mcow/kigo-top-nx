@@ -13,7 +13,7 @@ export function useCustomRouter() {
 
   const getFormattedUrl = (
     href: string,
-    routerOptions: CustomRouterOptions = { preserveQuery: true },
+    routerOptions: CustomRouterOptions = { preserveQuery: true }
   ) => {
     // If relative URL given, stick the current host on the string passed to URL()
     // as the constructor throws an error if URL without a host is given
@@ -47,7 +47,7 @@ export function useCustomRouter() {
   const push = (
     href: string,
     routerOptions: CustomRouterOptions = { preserveQuery: true },
-    options?: NavigateOptions,
+    options?: NavigateOptions
   ) => {
     const urlString = getFormattedUrl(href, routerOptions);
 
@@ -57,7 +57,7 @@ export function useCustomRouter() {
   const replace = (
     href: string,
     routerOptions: CustomRouterOptions = { preserveQuery: true },
-    options?: NavigateOptions,
+    options?: NavigateOptions
   ) => {
     const urlString = getFormattedUrl(href, routerOptions);
 

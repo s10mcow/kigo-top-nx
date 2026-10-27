@@ -15,13 +15,13 @@ export type CheckAccountValidityResponse = {
 
 const checkAccountValidity = async (
   email: string,
-  recaptcha_token: string,
+  recaptcha_token: string
 ): Promise<CheckAccountValidityResponse> => {
   const response = await makeClientCoreServerCall.post(
     '/accounts/checks/email',
     { email, token: recaptcha_token },
     {},
-    AUTHENTICATION_TYPES.ANONYMOUS,
+    AUTHENTICATION_TYPES.ANONYMOUS
   );
 
   return response as CheckAccountValidityResponse;

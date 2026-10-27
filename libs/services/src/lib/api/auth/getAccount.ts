@@ -8,7 +8,7 @@ const getCurrentAccount = async (): Promise<GetAccountResponse> => {
   const response = await makeClientCoreServerCall.get(
     URL,
     {},
-    AUTHENTICATION_TYPES.ACCESS,
+    AUTHENTICATION_TYPES.ACCESS
   );
 
   return response as GetAccountResponse;

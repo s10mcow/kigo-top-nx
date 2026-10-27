@@ -5,9 +5,13 @@ on:
     branches:
       - '*'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, ARM64, muchio-ci]
 
     steps:
       - name: Checkout repository
@@ -20,10 +24,10 @@ jobs:
           # package-manager: yarn === actions/setup-node@v3 action does not support the package-manager input.
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
-        run: npm run build
+        run: npm run build:all
 
       - name: Prettier check
         run: npm run prettier:check
@@ -32,4 +36,4 @@ jobs:
         run: npm run lint
 
       - name: Type check
-        run: npm run typecheck
+        run: npm run tsc

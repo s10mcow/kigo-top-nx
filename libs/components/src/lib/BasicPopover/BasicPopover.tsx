@@ -51,7 +51,7 @@ export default function BasicPopover({
         vertical: 'bottom',
         horizontal: 'left',
       } as PopoverOrigin),
-    [anchorOrigin],
+    [anchorOrigin]
   );
 
   const transformOriginValue = React.useMemo(
@@ -61,7 +61,7 @@ export default function BasicPopover({
         vertical: 'top',
         horizontal: 'left',
       } as PopoverOrigin),
-    [transformOrigin],
+    [transformOrigin]
   );
 
   return (

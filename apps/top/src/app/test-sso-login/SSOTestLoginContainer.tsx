@@ -14,7 +14,7 @@ export default function SSOTestLoginContainer({
   const router = useRouter();
   const [externalProgramId] = useState('interval');
   const [externalUserId, setExternalUserId] = useState(
-    'testssointerval@gmail.com',
+    'testssointerval@gmail.com'
   );
   const [userEmail, setUserEmail] = useState('testssointerval@gmail.com');
 
@@ -31,7 +31,7 @@ export default function SSOTestLoginContainer({
       });
 
       router.push(
-        `/sso/${externalProgramId}?uuid=${createApiSessionResponse.data.session_id}`,
+        `/sso/${externalProgramId}?uuid=${createApiSessionResponse.data.session_id}`
       );
     } catch (error) {
       console.error('Error navigating:', error);

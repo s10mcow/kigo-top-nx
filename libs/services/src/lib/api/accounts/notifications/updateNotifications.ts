@@ -41,7 +41,7 @@ const isNoExistingPreferenceError = (error: ApiError): boolean => {
   We catch this exact message and use it to instead create a new notification preference
 */
 export const updateNotifications = async (
-  request: UpdateCommunicationPreferencesRequestWithCreateFallback,
+  request: UpdateCommunicationPreferencesRequestWithCreateFallback
 ): Promise<void> => {
   // Validate required fields
   if (!request.token_as_email) {
@@ -58,7 +58,7 @@ export const updateNotifications = async (
   try {
     await makeClientCoreServerCall.patch(
       '/accounts/notifications',
-      updateRequest,
+      updateRequest
     );
   } catch (error: unknown) {
     if (isApiError(error) && isNoExistingPreferenceError(error)) {
@@ -74,7 +74,7 @@ export const updateNotifications = async (
 
       await makeClientCoreServerCall.post(
         '/accounts/notifications',
-        fallbackRequest,
+        fallbackRequest
       );
       return;
     }

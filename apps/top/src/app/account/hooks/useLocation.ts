@@ -27,11 +27,11 @@ export const useLocation = ({ zipCode, onZipCodeChange }: UseLocationProps) => {
       return response.results
         .map(
           (result: { address: { postal_code: string } }) =>
-            result.address.postal_code.split('-')[0],
+            result.address.postal_code.split('-')[0]
         )
         .filter(
           (value: string, index: number, self: string[]) =>
-            self.indexOf(value) === index,
+            self.indexOf(value) === index
         )
         .slice(0, 5);
     },

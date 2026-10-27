@@ -14,13 +14,13 @@ export type VerifyEmailVerificationCodeResponse = {
 };
 
 export default async function verifyEmailVerificationCode(
-  request: VerifyEmailVerificationCodeRequest,
+  request: VerifyEmailVerificationCodeRequest
 ): Promise<VerifyEmailVerificationCodeResponse> {
   const response = await makeClientCoreServerCall.patch(
     PATCH_VERIFY_EMAIL_VERIFICATION_REQUEST,
     request,
     {},
-    AUTHENTICATION_TYPES.ANONYMOUS,
+    AUTHENTICATION_TYPES.ANONYMOUS
   );
 
   return response;

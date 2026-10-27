@@ -16,7 +16,7 @@ interface SwipeToCloseResult {
  */
 export const useSwipeToClose = (
   onClose?: () => void,
-  enabled = false,
+  enabled = false
 ): SwipeToCloseResult => {
   const [swipeOffset, setSwipeOffset] = useState(0);
 
@@ -36,7 +36,7 @@ export const useSwipeToClose = (
           setSwipeOffset(Math.min(eventData.deltaY, 200));
         }
       },
-      [enabled],
+      [enabled]
     ),
 
     onSwipedDown: useCallback(() => {

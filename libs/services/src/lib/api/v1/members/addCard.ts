@@ -18,7 +18,7 @@ interface UserInfo {
 
 export const requestAddMemberCard = async (
   request: AddMemberCardRequest,
-  userInfo?: UserInfo,
+  userInfo?: UserInfo
 ): Promise<void> => {
   let member_id;
   let is_enrolled = false;
@@ -68,7 +68,7 @@ export const requestAddMemberCard = async (
         `/api/v1/members/${member_id}/cards`,
         request,
         {},
-        AUTHENTICATION_TYPES.SESSION,
+        AUTHENTICATION_TYPES.SESSION
       );
     } catch (error) {
       console.error('Error adding member card:', error);

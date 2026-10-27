@@ -9,7 +9,7 @@ export const deactivateKigoManagedAccount = async (): Promise<void> => {
       URL,
       {},
       {},
-      AUTHENTICATION_TYPES.ACCESS,
+      AUTHENTICATION_TYPES.ACCESS
     );
   } catch (error) {
     console.error('Error deactivating Kigo account:', error);

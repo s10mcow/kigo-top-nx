@@ -2,7 +2,7 @@ import { makeClientCoreServerCall } from '../../makeClientServerCall';
 import { AddressFromLatLongRequest, AddressFromLatLongResponse } from './types';
 
 export const requestAddressFromLatLong = async (
-  request: AddressFromLatLongRequest,
+  request: AddressFromLatLongRequest
 ): Promise<AddressFromLatLongResponse> => {
   try {
     const response = await makeClientCoreServerCall.post(
@@ -10,7 +10,7 @@ export const requestAddressFromLatLong = async (
       {
         latitude: request.latitude,
         longitude: request.longitude,
-      },
+      }
     );
 
     return response;

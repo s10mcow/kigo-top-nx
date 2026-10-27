@@ -29,7 +29,7 @@ export const makeServersideCoreServerCall = {
         ...mergedOptions,
         cache: 'no-store',
         // https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#individual-fetch-requests
-      },
+      }
     );
 
     if (!response.ok) {
@@ -54,7 +54,7 @@ export const makeServersideCoreServerCall = {
     url: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body: Record<string, any>,
-    options: RequestInit = {},
+    options: RequestInit = {}
   ) => {
     const response = await fetch(
       `${process.env['NEXT_PUBLIC_CORE_URL']}${url}`,
@@ -63,7 +63,7 @@ export const makeServersideCoreServerCall = {
         method: 'POST',
         headers: { ...(await getHeaders(body)), ...options.headers },
         body: body instanceof FormData ? body : JSON.stringify(body),
-      },
+      }
     );
     if (!response.ok) {
       const error = await response.json();
@@ -80,7 +80,7 @@ export const makeServersideCoreServerCall = {
     url: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body: Record<string, any>,
-    options: RequestInit = {},
+    options: RequestInit = {}
   ) => {
     const response = await fetch(
       `${process.env['NEXT_PUBLIC_CORE_URL']}${url}`,
@@ -89,7 +89,7 @@ export const makeServersideCoreServerCall = {
         method: 'PATCH',
         headers: { ...(await getHeaders(body)), ...options.headers },
         body: body instanceof FormData ? body : JSON.stringify(body),
-      },
+      }
     );
     return response.json();
   },
@@ -101,7 +101,7 @@ export const makeServersideCoreServerCall = {
         ...options,
         method: 'DELETE',
         headers: { ...(await getHeaders()), ...options.headers },
-      },
+      }
     );
     return response.json();
   },

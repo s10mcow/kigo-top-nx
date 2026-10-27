@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 export const unsubscribeEmailAddress = async (
-  accountId: string | null,
+  accountId: string | null
 ): Promise<void> => {
   if (!accountId) {
     throw new Error('No account id provided');

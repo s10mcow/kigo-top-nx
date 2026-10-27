@@ -26,7 +26,7 @@ export const requestRemoveCard = async (cardId: string): Promise<void> => {
     const response = await makeClientCoreServerCall.delete(
       `/api/v1/members/${member_id}/cards/${cardId}`,
       {},
-      AUTHENTICATION_TYPES.SESSION,
+      AUTHENTICATION_TYPES.SESSION
     );
 
     // Check if the response itself contains an error

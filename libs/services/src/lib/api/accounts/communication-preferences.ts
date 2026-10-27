@@ -7,13 +7,13 @@ const POST_COMMUNICATION_PREFERENCES_ROUTE =
   '/api/v1/accounts/communication-preferences';
 
 const updateCommunicationPreferences = async (
-  request: UpdateCommunicationPreferencesRequest,
+  request: UpdateCommunicationPreferencesRequest
 ): Promise<void> => {
   const response = await makeClientCoreServerCall.post(
     POST_COMMUNICATION_PREFERENCES_ROUTE,
     request,
     {},
-    AUTHENTICATION_TYPES.SESSION,
+    AUTHENTICATION_TYPES.SESSION
   );
 
   return response;
